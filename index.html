@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二手定价参考计算器 · Resale Price Estimator</title>
+<meta name="description" content="免费开源、纯浏览器运行的二手物品定价参考工具，输入原价、类目、使用时长和成色，按折旧模型估算合理的二手挂牌价区间。不联网。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>二手<span class="accent">定价参考</span>计算器</h1>
+    <p class="tagline">输入原价、物品类目、使用时长和成色，按类目折旧模型估算一个合理的二手挂牌价区间，方便你定价或还价参考。纯前端计算，不联网。</p>
+  </header>
+
+  <main class="layout">
+    <section class="controls">
+      <div class="field">
+        <label>购买原价（元）</label>
+        <input id="priceInput" type="number" value="3000" min="0" step="10">
+      </div>
+      <div class="field">
+        <label>物品类目</label>
+        <select id="categorySelect">
+          <option value="electronics">电子产品（手机/电脑/相机）</option>
+          <option value="appliance">家电</option>
+          <option value="furniture">家具</option>
+          <option value="clothing">服装/箱包</option>
+          <option value="other">其他</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>已使用时长（月）</label>
+        <input id="monthsInput" type="number" value="12" min="0" step="1">
+      </div>
+      <div class="field">
+        <label>成色</label>
+        <select id="conditionSelect">
+          <option value="0.95">全新未拆封</option>
+          <option value="0.85" selected>几乎全新</option>
+          <option value="0.70">轻微使用痕迹</option>
+          <option value="0.55">明显使用痕迹</option>
+          <option value="0.35">需要维修</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="result-wrap">
+      <div class="result-card">
+        <div class="result-num" id="priceRangeOut">--</div>
+        <div class="result-label">建议挂牌价区间</div>
+      </div>
+      <div class="detail-box">
+        <div class="detail-row"><span>类目年折旧率</span><span id="depreciationRateOut" class="val"></span></div>
+        <div class="detail-row"><span>折旧后基准价</span><span id="baseValueOut" class="val"></span></div>
+        <div class="detail-row"><span>成色系数</span><span id="conditionMultiplierOut" class="val"></span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>MIT 协议开源，纯前端折旧模型估算，不联网、不上传。实际成交价还会受品牌、市场供需、地区差异影响，仅供参考。</p>
+    <p>想要发布、求购、担保交易、评价的完整二手交易平台？<a href="https://inzyxuashop.com/ershou-yuanma.html" target="_blank" rel="noopener">看看完整版二手交易源码 →</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
